@@ -1,0 +1,81 @@
+  :root{
+    --night:#0B1F1A;
+    --turf:#123328;
+    --turf-light:#1E4D3A;
+    --turf-line: rgba(234,244,239,0.14);
+    --floodlight:#FFC93C;
+    --floodlight-dim:#7A6222;
+    --chalk:#EAF4EF;
+    --chalk-dim:#9FB8AC;
+    --cricket:#E63946;
+  }
+  body{ background:var(--night); color:var(--chalk); font-family:'Inter',sans-serif; }
+  .font-display{ font-family:'Oswald',sans-serif; letter-spacing:0.02em; }
+  .font-mono{ font-family:'JetBrains Mono',monospace; }
+  .card{ background:var(--turf); border:1px solid var(--turf-line); }
+  .btn-glow{ box-shadow:0 0 0 rgba(255,201,60,0); transition:all .15s ease; }
+  .btn-glow:hover{ box-shadow:0 0 18px rgba(255,201,60,0.35); }
+  .slot{
+    font-family:'JetBrains Mono',monospace;
+    border:1px solid var(--turf-line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.08));
+    transition: all .15s ease;
+    cursor:pointer;
+    user-select:none;
+  }
+  .slot:hover:not(.slot-booked):not(.slot-blocked){ border-color:var(--floodlight-dim); }
+  .slot-selected{
+    background: radial-gradient(circle at 50% 0%, rgba(255,201,60,0.35), rgba(255,201,60,0.08));
+    border-color: var(--floodlight);
+    box-shadow: 0 0 22px rgba(255,201,60,0.45), inset 0 0 12px rgba(255,201,60,0.15);
+    color: var(--floodlight);
+  }
+  .slot-booked{
+    background: repeating-linear-gradient(135deg, rgba(230,57,70,0.12), rgba(230,57,70,0.12) 6px, rgba(230,57,70,0.22) 6px, rgba(230,57,70,0.22) 12px);
+    border-color: rgba(230,57,70,0.4);
+    color: rgba(234,244,239,0.35);
+    cursor:not-allowed;
+  }
+  .slot-blocked{
+    background: rgba(255,255,255,0.03);
+    color: rgba(234,244,239,0.25);
+    cursor:not-allowed;
+  }
+  .tab-active{ background:var(--floodlight); color:#1B1500; }
+  .input-field{
+    background: rgba(255,255,255,0.04);
+    border:1px solid var(--turf-line);
+    color:var(--chalk);
+  }
+  .input-field:focus{ outline:none; border-color:var(--floodlight); }
+  ::placeholder{ color: var(--chalk-dim); }
+  .scrollbar-thin::-webkit-scrollbar{ height:6px; width:6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb{ background:var(--turf-light); border-radius:4px; }
+  .pill{ border:1px solid var(--turf-line); }
+
+  .hero-slide{
+    position:absolute; inset:0; background-size:cover; background-position:center;
+    opacity:0; animation: heroFade 15s infinite;
+  }
+  @keyframes heroFade{
+    0%{opacity:0;} 4%{opacity:1;} 30%{opacity:1;} 36%{opacity:0;} 100%{opacity:0;}
+  }
+  .hero-overlay{
+    background: linear-gradient(180deg, rgba(11,31,26,0.25) 0%, rgba(11,31,26,0.72) 65%, rgba(11,31,26,0.96) 100%);
+  }
+  .badge-glow{
+    border:1px solid var(--floodlight-dim); color:var(--floodlight);
+    animation: badgePulse 3.2s ease-in-out infinite;
+  }
+  @keyframes badgePulse{
+    0%,100%{ box-shadow:0 0 0 rgba(255,201,60,0); }
+    50%{ box-shadow:0 0 10px rgba(255,201,60,0.4); }
+  }
+  .gallery-thumb{
+    height:88px; width:130px; object-fit:cover; flex:none;
+    opacity:0; transform:translateY(10px);
+    animation: galleryIn 0.6s ease forwards;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .gallery-thumb:hover{ transform:scale(1.06); box-shadow:0 0 16px rgba(255,201,60,0.3); }
+  @keyframes galleryIn{ to{ opacity:1; transform:translateY(0);} }
